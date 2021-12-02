@@ -1,0 +1,12 @@
+[21.11.2021-14:56:34] INFO	:  Saved company info for https://hydroottawa.wd3.myworkdayjobs.com/hydro_ottawa_careersite/ in Table.Company
+[21.11.2021-14:56:35] INFO	:  Saved company info for https://vhr-osvhr.wd1.myworkdayjobs.com/OSV_External_Career_Site in Table.Company
+[21.11.2021-14:56:36] INFO	:  Saved company info for https://catalent.wd1.myworkdayjobs.com/External in Table.Company
+[21.11.2021-14:56:36] INFO	:  Saved company info for https://neustar.wd5.myworkdayjobs.com/neustar-careers/ in Table.Company
+[21.11.2021-14:56:36] INFO	:  Saved company info for https://philips.wd3.myworkdayjobs.com/jobs-and-careers in Table.Company
+[21.11.2021-14:56:37] INFO	:  Saved company info for https://officedepoteurope.wd3.myworkdayjobs.com/OD_Careers/ in Table.Company
+[21.11.2021-14:56:37] ERROR	:  Got Error during parsing company info !
+Error = Expecting value: line 1 column 1 (char 0)
+[21.11.2021-14:56:38] INFO	:  Saved company info for https://vistaoutdoor.wd1.myworkdayjobs.com/External in Table.Company
+[21.11.2021-14:56:38] INFO	:  Saved company info for https://ossur.wd3.myworkdayjobs.com/OssurCareersAmerica/ in Table.Company
+[21.11.2021-14:56:38] INFO	:  Saved company info for https://catalent.wd1.myworkdayjobs.com/Product_Development_Careers in Table.Company
+[21.11.2021-14:56:39] INFO	:  Saved company info for https://3m.wd1.myworkdayjobs.com/Search in Table.Company

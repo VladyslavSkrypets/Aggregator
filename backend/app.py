@@ -5,8 +5,8 @@ from serp.view import serp as serp_blueprint
 from admin.view import admin as admin_blueprint
 
 
-app.register_blueprint(job_blueprint, url_prefix='/job')
-app.register_blueprint(serp_blueprint, url_prefix='/jobs')
+app.register_blueprint(job_blueprint, url_prefix='/api/job')
+app.register_blueprint(serp_blueprint, url_prefix='/api/jobs')
 app.register_blueprint(admin_blueprint, url_prefix='/api/admin')
 
 

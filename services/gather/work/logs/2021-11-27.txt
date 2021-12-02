@@ -1,0 +1,10 @@
+[27.11.2021-12:46:24] INFO	:  Start parse WORK.UA
+[27.11.2021-12:46:24] INFO	:  Got last number of page = 7010
+[27.11.2021-12:46:28] ERROR	:  Can not parse salary field
+Error = 'NoneType' object has no attribute 'next_sibling'
+[27.11.2021-12:46:28] ERROR	:  Can not parse salary field
+Error = 'NoneType' object has no attribute 'next_sibling'
+[27.11.2021-12:46:29] ERROR	:  Can not parse salary field
+Error = 'NoneType' object has no attribute 'next_sibling'
+[27.11.2021-12:46:29] ERROR	:  Can not parse salary field
+Error = 'NoneType' object has no attribute 'next_sibling'
