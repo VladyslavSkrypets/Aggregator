@@ -37,10 +37,10 @@ class Indexer:
                 )
             )
         )
-        barch_unique_urls = {job['url'] for job in job_info_list}
+        batch_unique_urls = {job['url'] for job in job_info_list}
         new_jobs = [
             job for job in job_info_list
-            if job['url'] not in exist_urls and job['url'] in barch_unique_urls
+            if job['url'] not in exist_urls and job['url'] in batch_unique_urls
         ]
 
         return [prod_job(**{**new_job, 'uid': uuid.uuid4()}) for new_job in new_jobs]

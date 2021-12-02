@@ -1,0 +1,69 @@
+.job__container {
+    max-width: 992px !important;
+    margin: 40px auto 40px auto;
+}
+
+.job__card {
+    border-radius: 15px !important;
+}
+
+.job-subtitle {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.job__title {
+    color: rgb(11 13 14);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.job__job-type {
+    color: rgb(127 139 153);
+    font-size: 15px !important;
+    margin-top: 10px !important;
+}
+
+.job__job-salary {
+    margin-top: 5px !important;
+    font-size: 23px !important;
+}
+
+.remote-job {
+    color: rgb(241 145 48);
+    background-color: rgb(255 213 178);
+    border-radius: 50px;
+    padding: 5px 10px 5px 10px;
+    width: 105px;
+}
+
+.job__job-company {
+    margin-top: 16px !important;
+}
+
+.job__job-location {
+    font-size: 15px !important;
+    margin: 20px 0 15px 0 !important;
+    color: rgb(57 63 71) !important;
+    cursor: text;
+}
+
+.job__description-text {
+    font-size: 16px !important;
+
+}
+
+.job__apply-button {
+    font: normal 16px/24px Inter,Helvetica,Arial,sans-serif !important;
+    padding: 10px 0 10px 0 !important;
+    min-height: 48px;
+    width: 100%;
+}
+
+.apply-button-header {
+    margin-top: 25px;
+}

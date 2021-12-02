@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useFetchJobs from "../../api/useFetchJobs";
+import { useFetchJobs } from "../../api/useFetchJobs";
 import { Container, Spinner } from "react-bootstrap";
 
 import { Job, JobsPagination, SearchForm } from '../../components'

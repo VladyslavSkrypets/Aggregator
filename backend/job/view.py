@@ -1,6 +1,7 @@
 from backend.models import Job
 from backend.schemas.schema import JobPageSchema
 from flask import Blueprint, make_response, jsonify
+from backend.job.services import log_job_click_action
 
 
 job = Blueprint('job', __name__)
@@ -15,6 +16,7 @@ def job_page(uid):
             response.update({
                 'message': 'success', 'job': JobPageSchema().dump(job_data), 'status': 200
             })
+            log_job_click_action(uid)
         else:
             response.update({'message': 'Job is not found', 'job': {}, 'status': 404})
     except:

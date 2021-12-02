@@ -16,6 +16,11 @@ class Job(db.Model):
     remote_type = Column(String(1), nullable=True)
     posted_at = Column(DateTime, nullable=True)
     description = Column(Text, nullable=False)
-    user_clicks = db.Column(db.Integer(), nullable=False, default=0)
 
 
+class JobClicks(db.Model):
+    __tablename__ = 'job_clicks'
+
+    id = Column(Integer, primary_key=True)
+    uid = Column(String, nullable=False, unique=True)
+    count_clicks = Column(Integer, nullable=False)

@@ -29,18 +29,31 @@ function jobsReducer(state, action) {
 }
 
 function jobReducer(state, action) {
+    switch (action.type) {
+        case ACTIONS.MAKE_REQUEST:
+            return {loading: true, job: {}}
 
+        case ACTIONS.GET_DATA:
+            return {...state, loading: false, job: action.payload.job}
+
+        case ACTIONS.ERROR:
+            return {...state, loading: false, error: action.payload.error, job: {}}
+
+
+        default:
+            return state
+    }
 }
 
 
-export default function useFetchJobs(page, uid) {
+export function useFetchJobs(page) {
     const [state, dispatch] = useReducer(jobsReducer, {jobs: [], loading: true})
 
     useEffect(async () => {
         dispatch({type: ACTIONS.MAKE_REQUEST})
         const jobsRequest = await jobsApi.getJobs(page);
         dispatch({type: ACTIONS.GET_DATA, payload: {jobs: jobsRequest['jobs']}})
-        dispatch({type: ACTIONS.UPDATE_HAS_NEXT_PAGE, payload: {hasNextPage: jobsRequest['next_page']}})
+        dispatch({type: ACTIONS.UPDATE_HAS_NEXT_PAGE, payload: {hasNextPage: jobsRequest['is_next_page']}})
         // const nextPageRequest = await jobsApi.getJobs(page + 1);
         // dispatch({type: ACTIONS.UPDATE_HAS_NEXT_PAGE, payload: {hasNextPage: nextPageRequest['jobs'].length !== 0}})
     }, [page])
@@ -49,7 +62,15 @@ export default function useFetchJobs(page, uid) {
 
 }
 
-export default function useFetchJob(uid) {
-    const [state, dispatch] = useReducer(jobsReducer, {jobs: [], loading: true})
+export function useFetchJob(uid) {
+    const [state, dispatch] = useReducer(jobReducer, {job: {}, loading: true})
+
+    useEffect(async () => {
+        dispatch({type: ACTIONS.MAKE_REQUEST});
+        const jobRequest = await jobsApi.getJob(uid);
+        dispatch({type: ACTIONS.GET_DATA, payload: {job: jobRequest['job']}})
+    }, [uid])
+
+    return state
 
 }

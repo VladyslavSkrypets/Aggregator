@@ -1,6 +1,7 @@
 import React from "react";
-
-import { Card, Badge, Button } from "react-bootstrap";
+import { FaRegBuilding, FaCalendarAlt } from "react-icons/fa";
+import { ImLocation } from "react-icons/im"
+import { Card } from "react-bootstrap";
 
 
 export const Job = ({ job }) => {
@@ -8,25 +9,27 @@ export const Job = ({ job }) => {
         <Card className="mb-3">
             <Card.Body>
                 <div className="d-flex justify-content-between">
-                <div>
-                    <Card.Title>
-                        {job.title} <span style={{}} className="text-muted font-weight-light">{job.company ? ' - ' + job.company: ''}</span>
-                    </Card.Title>
-                    <Card.Subtitle className="text-muted mb-2">
-                    {job.posted_at}
-                    </Card.Subtitle>
-                    <Badge variant="secondary" className="mr-2">{job.job_type}</Badge>
-                    <Badge variant="secondary">{job.region}</Badge>
-                </div>
-                </div>
-                <div style={{marginTop: 15}}>
-                    <Button
-                        href={'/job/' + job.uid}
-                        variant="primary"
-                        size="sm"
-                    >
-                        View Details
-                    </Button>
+                    <div>
+                        <Card.Title style={{fontSize: '1.5rem'}}>
+                            <a style={{textDecoration: 'none'}} href={'/job/' + job.uid}>{job.title}</a>
+                        </Card.Title>
+                        <Card.Subtitle className="mt-2">
+                            {job.salary ? <Card.Subtitle className="mt-2">{job.salary}</Card.Subtitle>: ''}
+                        </Card.Subtitle>
+                        <Card.Text style={{fontSize: '14px', marginTop: 15}}>
+                            {job.description}
+                        </Card.Text>
+                        <hr />
+                        <Card.Subtitle className="text-muted font-weight-light">
+                            {job.company ? <div className="job-info-box"><FaRegBuilding className="icon" />{job.company}</div> : ''}
+                        </Card.Subtitle>
+                        <Card.Subtitle className="text-muted">
+                            {job.posted_at ? <div className="job-info-box"><FaCalendarAlt className="icon" />{job.posted_at}</div> : ''}
+                        </Card.Subtitle>
+                        <Card.Subtitle className="text-muted">
+                            {job.region ? <div className="job-info-box"><ImLocation className="icon" />{job.region}</div> : ''}
+                        </Card.Subtitle>
+                    </div>
                 </div>
             </Card.Body>
         </Card>
