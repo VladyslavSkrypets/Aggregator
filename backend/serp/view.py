@@ -1,26 +1,20 @@
-from backend.models import Job
-from backend.schemas.schema import JobSerpSchema
 from flask import Blueprint, jsonify, request
+from backend.serp.services import SerpConstructor
 
 
 serp = Blueprint('serp', __name__)
 
 
-@serp.route('/get-jobs', methods=['GET', 'POST'])
+@serp.route('/get-jobs', methods=['POST'])
 def get_jobs():
     response = {}
-    jobs_per_page = 20
-    page_number = int(request.args['page'])
+    payload = request.json
     try:
-        jobs = (
-            Job.query.order_by(Job.id)
-            .offset((page_number - 1) * jobs_per_page)
-            .limit(jobs_per_page)
-            .all()
-        )
+        serp_constructor = SerpConstructor(payload)
+        jobs = serp_constructor.get_jobs()
         response.update({
-            'jobs': JobSerpSchema().dump(jobs, many=True),
-            'is_next_page': len(jobs) == jobs_per_page
+            'jobs': jobs,
+            'is_next_page': len(jobs) == serp_constructor.jobs_per_page
         })
     except:
         response.update({'error': "Jobs cannot be obtained"})
