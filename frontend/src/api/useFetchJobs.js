@@ -46,17 +46,15 @@ function jobReducer(state, action) {
 }
 
 
-export function useFetchJobs(page) {
+export function useFetchJobs(page, filters) {
     const [state, dispatch] = useReducer(jobsReducer, {jobs: [], loading: true})
 
     useEffect(async () => {
         dispatch({type: ACTIONS.MAKE_REQUEST})
-        const jobsRequest = await jobsApi.getJobs(page);
+        const jobsRequest = await jobsApi.getJobs({'page': page, ...filters});
         dispatch({type: ACTIONS.GET_DATA, payload: {jobs: jobsRequest['jobs']}})
         dispatch({type: ACTIONS.UPDATE_HAS_NEXT_PAGE, payload: {hasNextPage: jobsRequest['is_next_page']}})
-        // const nextPageRequest = await jobsApi.getJobs(page + 1);
-        // dispatch({type: ACTIONS.UPDATE_HAS_NEXT_PAGE, payload: {hasNextPage: nextPageRequest['jobs'].length !== 0}})
-    }, [page])
+    }, [page, filters])
 
     return state
 

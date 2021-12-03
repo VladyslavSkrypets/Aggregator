@@ -1,8 +1,8 @@
 import instance from "./init";
 
 export default {
-    getJobs: async (pageNumber) => {
-        const response = await instance.get(`/api/jobs/get-jobs?page=${pageNumber}`);
+    getJobs: async (data) => {
+        const response = await instance.post(`/api/jobs/get-jobs`, data);
         return response.data;
     },
     getJob: async (jobUid) => {

@@ -6,7 +6,7 @@ import { Card } from "react-bootstrap";
 
 export const Job = ({ job }) => {
     return (
-        <Card className="mb-3">
+        <Card className="mb-3" style={{boxShadow: '0 0 2px rgb(5 20 41 / 6%), 0 2px 3px rgb(5 20 41 / 8%)'}}>
             <Card.Body>
                 <div className="d-flex justify-content-between">
                     <div>

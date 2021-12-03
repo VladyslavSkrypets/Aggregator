@@ -1,0 +1,8 @@
+.filters-container {
+    width: 248px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    margin-left: 50px;
+    box-shadow: 0 0 2px rgb(5 20 41 / 6%), 0 2px 3px rgb(5 20 41 / 8%);
+}

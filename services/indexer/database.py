@@ -27,7 +27,6 @@ class Job(Base):
     remote_type = Column(String(1), nullable=True)
     posted_at = Column(DateTime, nullable=True)
     description = Column(Text, nullable=False)
-    user_clicks = Column(Integer(), nullable=False, default=0)
 
 
 def init_prod_db():

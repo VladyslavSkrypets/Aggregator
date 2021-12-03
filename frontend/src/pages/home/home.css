@@ -1,0 +1,38 @@
+.page-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.serp-container {
+    max-width: 900px;
+    margin-left: 45px;
+}
+
+.filters-container {
+    padding: 16px 24px 24px;
+}
+
+.filters-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filters-reader {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+    color: rgb(11 13 14);
+    padding: 7px 7px 20px 0;
+}
+
+.filter-block-header {
+    color: rgb(11 13 14);
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.filter-block {
+    margin-bottom: 25px;
+}

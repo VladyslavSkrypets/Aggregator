@@ -41,15 +41,13 @@ class SerpConstructor:
         self.__base_query = self.__base_query.filter(Job.region.like(f'%{region}%'))
 
     def _add_job_type_filter(self):
-        job_types = ('%Full%', '%Полная%', '%Повна%')
-        for job_type in job_types:
-            self.__base_query = self.__base_query.filter(Job.job_type.like(job_type))
+        self.__base_query = self.__base_query.filter(Job.job_type.like('%Full%'))
 
-    def _add_remote_type_filter(self, remote_type: str):
-        self.__base_query = self.__base_query.filter(Job.remote_type == remote_type)
+    def _add_remote_type_filter(self):
+        self.__base_query = self.__base_query.filter(Job.remote_type == '1')
 
     def _add_salary_filter(self, salary: str):
-        self.__base_query = self.__base_query.filter(Job.job_type.like(f'%{salary}%'))
+        self.__base_query = self.__base_query.filter(Job.salary.like(f'%{salary}%'))
 
     def _add_pagination(self):
         self.__base_query = (
@@ -68,7 +66,10 @@ class SerpConstructor:
             'salary': self._add_salary_filter
         }
         for filter_name, filter_value in applied_filters.items():
-            filters_methods[filter_name](filter_value)
+            if filter_name in {'job-type', 'remote-type'}:
+                filters_methods[filter_name]()
+            else:
+                filters_methods[filter_name](filter_value)
 
         self._add_pagination()
         query_items_result = [model[0] for model in self.__base_query.all()]

@@ -1,3 +1,5 @@
 export { Job } from './job'
 export { JobsPagination } from './pagination'
-export { SearchForm } from './searchForm'
+export { EmptyPage } from './empty-page'
+export { FiltersBlock } from './filters-block'
+export { Header } from './header'

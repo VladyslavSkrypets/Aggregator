@@ -21,7 +21,7 @@ export const JobPage = () => {
                     <div>
                         <Card.Title className="job__title" as="h2">{job.title}</Card.Title>
                         {job.salary ? <Card.Subtitle className="job__job-salary">{job.salary}</Card.Subtitle> : ''}
-                        {job.job_type ? <Card.Subtitle className="job__job-type">{job.job_type}</Card.Subtitle> : ''}
+                        {job.job_type ? <Card.Subtitle className="job__job-type job-subtitle">{job.job_type}</Card.Subtitle> : ''}
                         {job.company ? <Card.Subtitle className="job__job-company job-subtitle"><FaRegBuilding className="icon" />{job.company}</Card.Subtitle> : ''}
                         {job.region ? <Card.Subtitle className="job__job-location job-subtitle"><ImLocation className="icon" />{job.region}</Card.Subtitle> : ''}
                         {job.remote_type ? <div className="remote-job">Remote job</div> : ''}
