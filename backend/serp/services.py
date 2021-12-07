@@ -1,6 +1,6 @@
 from backend import db
-from sqlalchemy import desc, asc
-from backend.models import Job, JobClicks
+from sqlalchemy import desc
+from backend.models import Job
 from backend.schemas.schema import JobSerpSchema
 
 
@@ -19,9 +19,8 @@ class SerpConstructor:
     @staticmethod
     def __get_base_query():
         base_query = (
-            db.session.query(Job, JobClicks)
-            .outerjoin(JobClicks, Job.uid == JobClicks.uid)
-            .order_by(asc(JobClicks.count_clicks))
+            db.session.query(Job)
+            .order_by(desc(Job.total_clicks))
             .order_by(desc(Job.posted_at))
         )
 
@@ -72,5 +71,4 @@ class SerpConstructor:
                 filters_methods[filter_name](filter_value)
 
         self._add_pagination()
-        query_items_result = [model[0] for model in self.__base_query.all()]
-        return JobSerpSchema().dump(query_items_result, many=True)
+        return JobSerpSchema().dump(self.__base_query.all(), many=True)

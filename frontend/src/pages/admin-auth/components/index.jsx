@@ -14,8 +14,11 @@ export const LoginForm = (props) => {
     }
 
     const onSubmit = (event) => {
-        handleSubmit(username, password)
+        const authResult = !handleSubmit(username, password)
         event.preventDefault();
+        if (authResult) {
+            alert("Error")
+        }
     }
 
     return (

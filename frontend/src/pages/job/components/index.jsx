@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
 import { FaRegBuilding } from "react-icons/fa";
 import { ImLocation } from "react-icons/im"
 import { Card, Container, Button } from "react-bootstrap";
@@ -11,8 +11,9 @@ import "./job.css";
 
 export const JobPage = () => {
 
+    const source = new URLSearchParams(useLocation().search).get('utm_source');
     const { uid } = useParams();
-    const { job, loading } = useFetchJob(uid);
+    const { job, loading } = useFetchJob(uid, source);
 
     return (
         <Container className="job__container">

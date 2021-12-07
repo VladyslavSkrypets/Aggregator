@@ -11,7 +11,7 @@ export const Job = ({ job }) => {
                 <div className="d-flex justify-content-between">
                     <div>
                         <Card.Title style={{fontSize: '1.5rem'}}>
-                            <a style={{textDecoration: 'none'}} href={'/job/' + job.uid}>{job.title}</a>
+                            <a style={{textDecoration: 'none'}} href={'/job/' + job.uid + '?utm_source=searcher'}>{job.title}</a>
                         </Card.Title>
                         <Card.Subtitle className="mt-2">
                             {job.salary ? <Card.Subtitle className="mt-2">{job.salary}</Card.Subtitle>: ''}

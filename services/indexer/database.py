@@ -1,6 +1,6 @@
 from services.config import ProductionDatabase
 from sqlalchemy.pool import StaticPool
-from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, Boolean
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -27,6 +27,17 @@ class Job(Base):
     remote_type = Column(String(1), nullable=True)
     posted_at = Column(DateTime, nullable=True)
     description = Column(Text, nullable=False)
+    total_clicks = Column(Integer, nullable=False, default=0)
+
+
+class ServicesInfo(Base):
+    __tablename__ = 'services_info'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    service_name = Column(String, nullable=False)
+    service_type = Column(String)
+    run_command = Column(String, nullable=False)
+    is_active = Column(Boolean, nullable=False, default=False)
 
 
 def init_prod_db():

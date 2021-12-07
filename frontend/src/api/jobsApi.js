@@ -5,8 +5,8 @@ export default {
         const response = await instance.post(`/api/jobs/get-jobs`, data);
         return response.data;
     },
-    getJob: async (jobUid) => {
-        const response = await instance.post(`/api/job/${jobUid}`);
+    getJob: async (jobUid, source) => {
+        const response = await instance.post(`/api/job/${jobUid}?utm_source=${source}`);
         return response.data;
     },
     getFiltredJobs: async (filters) => {

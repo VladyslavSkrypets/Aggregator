@@ -1,5 +1,8 @@
 from backend.config import Credentials
-from backend.admin.services import generate_admin_token
+from backend.admin.services import (
+    generate_admin_token, run_parsers, get_gathers_info, get_clicks_statistic,
+    get_total_jobs_in_base
+)
 from flask import Blueprint, request, make_response, jsonify
 
 
@@ -32,3 +35,29 @@ def admin_login():
         })
 
     return make_response(jsonify(response), response['status'])
+
+
+@admin.route('/get-admin-info', methods=['POST'])
+def get_admin_info():
+    response = {
+        'info': {
+            'gathers_info': get_gathers_info(),
+            'clicks_statistic': get_clicks_statistic(),
+            'total_jobs': get_total_jobs_in_base()
+        }
+    }
+    return jsonify(response)
+
+
+@admin.route('/run-gathers', methods=['POST'])
+def run_gathers():
+    response = {}
+    try:
+        parser_id = request.json.get('parser_id', 0)
+        run_parsers(parser_id)
+        response.update({'id': parser_id, 'is_active': True})
+    except Exception as e:
+        response.update({'id': 0, 'error': e})
+
+    return jsonify(response)
+

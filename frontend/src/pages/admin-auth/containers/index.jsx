@@ -11,7 +11,9 @@ export const Login = () => {
         if (response['status'] === 200) {
             localStorage.setItem('adminToken', response['token']);
             navigate('/admin/settings-manager');
+            return true;
         } else {
+            return false;
         }
     }
 

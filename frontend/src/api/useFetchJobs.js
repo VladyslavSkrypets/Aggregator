@@ -60,12 +60,12 @@ export function useFetchJobs(page, filters) {
 
 }
 
-export function useFetchJob(uid) {
+export function useFetchJob(uid, source) {
     const [state, dispatch] = useReducer(jobReducer, {job: {}, loading: true})
 
     useEffect(async () => {
         dispatch({type: ACTIONS.MAKE_REQUEST});
-        const jobRequest = await jobsApi.getJob(uid);
+        const jobRequest = await jobsApi.getJob(uid, source);
         dispatch({type: ACTIONS.GET_DATA, payload: {job: jobRequest['job']}})
     }, [uid])
 

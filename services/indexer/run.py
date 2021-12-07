@@ -1,6 +1,7 @@
 import uuid
 from services.schema import GatherJobSchema
 from typing import List
+from services.indexer.helpers import update_service_state
 from services.gather.database import Job as gather_job, init_db
 from services.indexer.database import Job as prod_job, init_prod_db
 
@@ -60,5 +61,8 @@ class Indexer:
 
 
 if __name__ == '__main__':
+    update_service_state('Gather', False)
+    update_service_state('Indexer', True)
     indexer = Indexer()
     indexer.run()
+    update_service_state('Indexer', False)

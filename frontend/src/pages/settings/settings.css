@@ -1,0 +1,51 @@
+.manager__page {
+    height: 100vh;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.parser-control-block {
+    display: flex;
+}
+
+.manager-page-container.top {
+    margin-top: 20px;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.manager-page-container.bottom {
+    padding: 25px;
+    background-color: white;
+    border-radius: 20px;
+    height: 50%;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    overflow: scroll;
+    display: flex;
+    box-shadow: 0 0 4px rgb(5 20 41 / 8%), 0 0 6px rgb(5 20 41 / 12%);
+}
+
+.sub-block {
+    padding: 25px;
+    overflow: scroll;
+    border-radius: 20px;
+    width: 50%;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 0 0 4px rgb(5 20 41 / 8%), 0 0 6px rgb(5 20 41 / 12%);
+}
+
+.job-clicks-block {
+    margin: 10px;
+    width: 100%;
+}
+
+.gathers-table {
+    text-align: center;
+}
