@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Button, Table } from "react-bootstrap";
 import { adminApi } from "../../api";
+import { openNotificationWithIcon } from "../../common/helpers";
 import { useFetchAdminInfo } from "../../api/useFetchAdminInfo";
 
 
@@ -34,6 +35,11 @@ export const SettingsPage = () => {
                 [parserId]: true
             }))
         }
+        openNotificationWithIcon({
+            title: 'Seccess !',
+            type: 'success',
+            text: 'The service was launched successfully !'
+        })
         const response = await adminApi.runParser({'parser_id': parserId});
         
     }

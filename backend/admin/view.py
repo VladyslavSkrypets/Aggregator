@@ -34,7 +34,7 @@ def admin_login():
             'status': 200
         })
 
-    return make_response(jsonify(response), response['status'])
+    return make_response(jsonify(response))
 
 
 @admin.route('/get-admin-info', methods=['POST'])

@@ -1,17 +1,10 @@
-import React from "react";
-import Toast from 'react-bootstrap/Toast'
+import { notification } from 'antd';
 
 
-export const ErrorToast = (props) => {
-    const {message, title, type} = props; 
-    return (
-        <Toast className="d-inline-block m-1" bg={type}>
-            <Toast.Header>
-                <strong className="me-auto">{title}</strong>
-            </Toast.Header>
-            <Toast.Body className="Dark">
-                {message}
-            </Toast.Body>
-        </Toast>
-    )
-}
+export const openNotificationWithIcon = ({ text, type = 'info', title, duration = 3 }) => {
+    notification[type]({
+        message: title,
+        description: text,
+        duration: duration,
+    });
+};

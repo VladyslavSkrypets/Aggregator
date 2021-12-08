@@ -57,7 +57,11 @@ class Indexer:
         while self._current_insert_size < self._max_jobs:
             gathered_jobs = self._get_gathered_jobs()
             new_jobs = self._check_exist_urls(gathered_jobs)
+            if not bool(len(new_jobs)):
+                self._current_insert_size += len(gathered_jobs)
             self._add_batch(new_jobs)
+        self.__gather_db.query(gather_job).delete()
+        self.__gather_db.commit()
 
 
 if __name__ == '__main__':

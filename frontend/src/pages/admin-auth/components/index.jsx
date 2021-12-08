@@ -1,29 +1,39 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
+import { adminApi } from "../../../api";
+import { useNavigate } from "react-router-dom";
+import { openNotificationWithIcon } from "../../../common/helpers";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 
-export const LoginForm = (props) => {
+export const Login = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const { handleSubmit, validateForm } = props;
-
-    const onValidate = () => {
-        return validateForm(username, password);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        let response = await adminApi.login({username, password});
+        if (response['status'] === 200) {
+            localStorage.setItem('adminToken', response['token']);
+            navigate('/admin/settings-manager');
+            window.location.reload();
+        } else {
+            openNotificationWithIcon({
+                title: 'Authorization Error!',
+                type: 'error',
+                text: response['message']
+            })
+        }
     }
 
-    const onSubmit = (event) => {
-        const authResult = !handleSubmit(username, password)
-        event.preventDefault();
-        if (authResult) {
-            alert("Error")
-        }
+    const validateForm = () => {
+        return username.length > 3 && password.length > 2;
     }
 
     return (
         <div className="Login">
-            <Form onSubmit={onSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="username">
                     <Form.Label>Username</Form.Label>
                     <Form.Control
@@ -41,7 +51,7 @@ export const LoginForm = (props) => {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button variant="primary" size="lg" type="submit" disabled={!onValidate()}>
+                <Button variant="primary" size="lg" type="submit" disabled={!validateForm()}>
                     Login
                 </Button>
             </Form>
