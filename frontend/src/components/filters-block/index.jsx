@@ -32,7 +32,7 @@ export const FiltersBlock = ({ onParamChange, onApply }) => {
                             Salary
                         </div>
                         <div className="inner-block">
-                            <Form.Control  placeholder="Min salary" name="salary" type="text" onChange={onParamChange} />
+                            <Form.Control  placeholder="Example: 15 000" name="salary" type="text" onChange={onParamChange} />
                         </div>
                     </div>
                     <Button onClick={onApply}>Apply filters</Button>

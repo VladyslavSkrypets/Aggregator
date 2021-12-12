@@ -16,8 +16,8 @@ def get_jobs():
             'jobs': jobs,
             'is_next_page': len(jobs) == serp_constructor.jobs_per_page
         })
-    except:
-        response.update({'error': "Jobs cannot be obtained"})
+    except Exception as e:
+        response.update({'error': e, 'jobs': []})
 
     return jsonify(response)
 

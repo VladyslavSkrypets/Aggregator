@@ -23,7 +23,7 @@ export const SettingsPage = () => {
     const onParserRun = async (e) => {
         const parserId = e.target.getAttribute("data-id")
         runActiveState[parserId] = true;
-        if (Object.keys(activeRun).length !== 3) {
+        if (Object.keys(activeRun).length !== adminInfo['gathers_info'].length) {
             setActiveRun(prevParams => ({
                 ...prevParams,
                 ...runActiveState,
